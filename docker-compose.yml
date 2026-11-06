@@ -1,0 +1,35 @@
+services:
+  client-a2a:
+    build:
+      context: .
+    image: essbony/client-a2a-outline:local
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "10008"
+      STREAMLIT_SERVER_PORT: "8501"
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
+
+    # Hardening: immutable filesystem, no extra privileges
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request as u; u.urlopen('http://127.0.0.1:8501/_stcore/health', timeout=4)"
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3

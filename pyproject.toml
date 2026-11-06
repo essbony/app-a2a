@@ -1,0 +1,38 @@
+[project]
+name = "client-a2a"
+version = "0.1.0"
+description = "Client A2A pour l'agent outline-agent — interface Streamlit professionnelle"
+readme = "README.md"
+authors = [
+    { name = "bony", email = "essbony@outlook.fr" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "a2a-sdk>=1.2.3",
+    "httpx>=0.28.1",
+    "python-dotenv>=1.2.4",
+    "requests>=2.32.0",
+    "streamlit>=1.40.0",
+]
+
+[project.scripts]
+client-a2a = "client_a2a:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+# clientA2A.py est volontairement non modifié : on ignore son BLE001 (broad except)
+# N999 : test_clientA2A.py conserve la casse du module d'origine
+per-file-ignores = { "clientA2A.py" = ["BLE001"], "tests/test_clientA2A.py" = ["N999"] }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.0",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.17.0",
+]

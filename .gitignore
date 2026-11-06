@@ -1,0 +1,60 @@
+## Clés et identifiants — ne jamais commiter
+*.pem
+*.key
+credentials*.json
+service-account*.json
+*-credentials.json
+
+## Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+## Virtual environments
+.env
+.venv/
+venv/
+env/
+ENV/
+
+## uv
+.uv/
+.cache/
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+
+## Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+wheels/
+
+## Environment & secrets — never commit these
+.env
+.env.*
+!.env.example
+
+## Logs
+*.log
+logs/
+
+## OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+## Coverage / test artefacts
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+## Local run artefacts
+*.pid

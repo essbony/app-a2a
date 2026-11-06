@@ -1,0 +1,5 @@
+a2a-sdk>=1.2.3
+httpx>=0.28.1
+python-dotenv>=1.2.4
+requests>=2.32.0
+streamlit>=1.40.0
